@@ -54,6 +54,7 @@ aws-ete-de-project/
 - Handles schema mapping and type casting
 - Implements incremental loading (only processes new files)
 - Writes data to the bronze Iceberg table
+
 **2**. **staging_to_reference-taxi_zone_lookup-etl.py**
   
 Loads the taxi zone lookup reference data:
@@ -72,7 +73,7 @@ Transforms bronze data into the silver layer:
 - Creates derived fields (zone_od - origin-destination pair)
 - Selects relevant columns for analytics
 - Writes to silver Iceberg table
-- 
+  
 **4**. **silver_to_gold-zone_stats-etl.py**
   
 Aggregates silver data into analytics-ready gold tables:
