@@ -90,6 +90,7 @@ Configures an event rule that:
 
 - Monitors the S3 bucket for new files in the staging area
 - Triggers the Step Functions workflow when new files are detected
+  
 **Step Functions Workflow (ete-project-nyc-taxi-pipeline.json)**
   
 Defines a workflow that:
