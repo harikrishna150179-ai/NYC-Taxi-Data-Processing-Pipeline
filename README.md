@@ -32,13 +32,16 @@ aws-ete-de-project/
 └── step-function/             # Step Functions workflow definition
 ```
 ## Components
+
 ### Data Storage Layers
-1.**Staging Layer**:Raw data landing zone (Parquet files)
-2.**Bronze Layer**: Raw data with metadata (Iceberg tables)
-3.**Silver Layer**: Cleansed and transformed data (Iceberg tables)
-4.**Gold Layer**: Aggregated analytics data (Iceberg tables)
+
+1. **Staging Layer**: Raw data landing zone (Parquet files)
+2. **Bronze Layer**: Raw data with metadata (Iceberg tables)
+3. **Silver Layer**: Cleansed and transformed data (Iceberg tables)
+4. **Gold Layer**: Aggregated analytics data (Iceberg tables)
 
 ### Table Definitions
+
 - **staging-nyc_taxi.sql**: External table pointing to raw Parquet files
 - **bronze-nyc_taxi.sql**: Raw data with added metadata
 - **reference-taxi_zone.ddl**: Taxi zone lookup reference data
