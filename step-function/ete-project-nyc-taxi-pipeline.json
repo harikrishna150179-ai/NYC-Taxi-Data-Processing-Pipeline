@@ -1,0 +1,76 @@
+{
+    "Comment": "Orchestrate staging→bronze→silver→gold Glue ETL pipelines with SNS notifications",
+    "StartAt": "Start staging_to_bronze-nyc_taxi-etl",
+    "States": {
+      "Start staging_to_bronze-nyc_taxi-etl": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::glue:startJobRun.sync",
+        "Arguments": {
+          "JobName": "staging_to_bronze-nyc_taxi-etl"
+        },
+        "Next": "Start bronze_to_silver-nyc_taxi-etl",
+        "Catch": [
+          {
+            "ErrorEquals": [
+              "States.TaskFailed"
+            ],
+            "Next": "HandleFailure"
+          }
+        ]
+      },
+      "Start bronze_to_silver-nyc_taxi-etl": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::glue:startJobRun.sync",
+        "Arguments": {
+          "JobName": "bronze_to_silver-nyc_taxi-etl"
+        },
+        "Next": "Start silver_to_gold-zone_stats-etl",
+        "Catch": [
+          {
+            "ErrorEquals": [
+              "States.TaskFailed"
+            ],
+            "Next": "HandleFailure"
+          }
+        ]
+      },
+      "Start silver_to_gold-zone_stats-etl": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::glue:startJobRun.sync",
+        "Arguments": {
+          "JobName": "silver_to_gold-zone_stats-etl"
+        },
+        "Next": "PublishSuccessNotification",
+        "Catch": [
+          {
+            "ErrorEquals": [
+              "States.TaskFailed"
+            ],
+            "Next": "HandleFailure"
+          }
+        ]
+      },
+      "HandleFailure": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::sns:publish",
+        "End": true,
+        "Arguments": {
+          "TopicArn": "arn:aws:sns:ap-south-1:419518701386:ete-project-nyc-taxi-notification",
+          "Message": "{% $states.input %}"
+        }
+      },
+      "PublishSuccessNotification": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::sns:publish",
+        "Next": "Success",
+        "Arguments": {
+          "TopicArn": "arn:aws:sns:ap-south-1:419518701386:ete-project-nyc-taxi-notification",
+          "Message": "{% $states.input %}"
+        }
+      },
+      "Success": {
+        "Type": "Succeed"
+      }
+    },
+    "QueryLanguage": "JSONata"
+  }
