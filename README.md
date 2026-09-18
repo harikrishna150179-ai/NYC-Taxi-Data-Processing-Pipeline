@@ -6,15 +6,11 @@ This project implements an end-to-end data processing pipeline for NYC taxi data
 The pipeline follows a modern data lakehouse architecture with the following components:
 
 
-1.**Data Ingestion**: Raw data lands in S3 staging area
-
-2.**Event-Driven Processing**: EventBridge detects new files and triggers Step Functions workflow
-
-3.**Orchestration**: Step Functions coordinates the ETL jobs in sequence
-
-4.**Data Processing**: AWS Glue jobs transform data through bronze, silver, and gold layers
-
-5.**Storage**: Apache Iceberg tables provide ACID transactions and time travel capabilities
+1. **Data Ingestion**: Raw data lands in S3 staging area
+2. **Event-Driven Processing**: EventBridge detects new files and triggers Step Functions workflow
+3. **Orchestration**: Step Functions coordinates the ETL jobs in sequence
+4. **Data Processing**: AWS Glue jobs transform data through bronze, silver, and gold layers
+5. **Storage**: Apache Iceberg tables provide ACID transactions and time travel capabilities
 
 ## Data Flow
 S3 (Raw Data) → Bronze (Raw + Metadata) → Silver (Transformed) → Gold (Aggregated)
