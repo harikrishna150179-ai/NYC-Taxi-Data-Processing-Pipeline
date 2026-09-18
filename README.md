@@ -17,3 +17,4 @@ The pipeline follows a modern data lakehouse architecture with the following com
 5.**Storage**: Apache Iceberg tables provide ACID transactions and time travel capabilities
 
 # Data Flow
+S3 (Raw Data) → Bronze (Raw + Metadata) → Silver (Transformed) → Gold (Aggregated)
