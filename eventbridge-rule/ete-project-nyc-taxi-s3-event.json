@@ -1,0 +1,23 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "CloudFormation template for EventBridge Ruleete-project-nyc-taxi-s3-event",
+    "Resources": {
+      "Rule5e75128a": {
+        "Type": "AWS::Events::Rule",
+        "Properties": {
+          "Name": "ete-project-nyc-taxi-s3-event",
+          "EventPattern": "{\"source\":[\"aws.s3\"],\"detail-type\":[\"Object Created\"],\"detail\":{\"bucket\":{\"name\":[\"ete-project-nyc-taxi-bucket\"]},\"object\":{\"key\":[{\"prefix\":\"data/staging/nyc_taxi/\"}]}}}",
+          "State": "ENABLED",
+          "EventBusName": "default",
+          "Targets": [{
+            "Id": "Ida7aede1b-be4c-417b-8c4f-f861db632f67",
+            "Arn": {
+              "Fn::Sub": "arn:${AWS::Partition}:states:${AWS::Region}:${AWS::AccountId}:stateMachine:ete-project-nyc-taxi-pipeline"
+            },
+            "RoleArn": "arn:aws:iam::419518701386:role/service-role/ete-project-nyc-taxi-eb_invoke_sf_role"
+          }]
+        }
+      }
+    },
+    "Parameters": {}
+  }
