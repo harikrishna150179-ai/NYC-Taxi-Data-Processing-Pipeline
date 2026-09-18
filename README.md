@@ -23,7 +23,7 @@ S3 (Raw Data) → Bronze (Raw + Metadata) → Silver (Transformed) → Gold (Agg
 
 aws-ete-de-project/
 
-├── crawlers/                      # AWS Glue Crawler configurations  
+├── crawlers/&emsp;&emsp;# AWS Glue Crawler configurations  
 
 ├── data/                          # Sample data files
 │   ├── nyc_taxi/                  # NYC taxi trip data
