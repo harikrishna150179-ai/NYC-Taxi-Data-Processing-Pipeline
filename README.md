@@ -25,7 +25,7 @@ aws-ete-de-project/
 
 ├── crawlers/&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;# AWS Glue Crawler configurations  
 ├── data/&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;# Sample data files
-│   ├── nyc_taxi/                  # NYC taxi trip data
+│   ├── nyc_taxi/&emsp;&emsp;&emsp;&emsp;# NYC taxi trip data
 │   └── reference/                 # Reference data (taxi zones)
 ├── ddl/                           # Table definitions
 ├── etl-scripts/                   # AWS Glue ETL scripts
