@@ -31,3 +31,19 @@ aws-ete-de-project/
 ├── etl-scripts/                   # AWS Glue ETL scripts
 ├── eventbridge-rule/              # EventBridge rule definitions
 └── step-function/                 # Step Functions workflow definition
+
+NYC Taxi Parquet Files
+        ↓
+Amazon S3 Staging
+        ↓
+EventBridge
+        ↓
+AWS Step Functions
+        ↓
+AWS Glue ETL Jobs
+        ↓
+Bronze → Silver → Gold Iceberg Tables
+        ↓
+Analytics-ready datasets
+        ↓
+SNS success/failure notifications
