@@ -15,3 +15,5 @@ The pipeline follows a modern data lakehouse architecture with the following com
 4.**Data Processing**: AWS Glue jobs transform data through bronze, silver, and gold layers
 
 5.**Storage**: Apache Iceberg tables provide ACID transactions and time travel capabilities
+
+# Data Flow
