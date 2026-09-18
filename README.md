@@ -22,6 +22,7 @@ S3 (Raw Data) → Bronze (Raw + Metadata) → Silver (Transformed) → Gold (Agg
 # Project Structure
 
 aws-ete-de-project/
+
 ├── crawlers/                   # AWS Glue Crawler configurations
 
 ├── data/                       # Sample data files
