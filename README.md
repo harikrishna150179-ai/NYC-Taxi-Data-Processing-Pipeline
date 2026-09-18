@@ -23,18 +23,11 @@ S3 (Raw Data) → Bronze (Raw + Metadata) → Silver (Transformed) → Gold (Agg
 
 aws-ete-de-project/
 
-├── crawlers/                   # AWS Glue Crawler configurations
-
-├── data/                       # Sample data files
-
-│   ├── nyc_taxi/               # NYC taxi trip data
-
-│   └── reference/              # Reference data (taxi zones)
-
-├── ddl/                        # Table definitions
-
-├── etl-scripts/                # AWS Glue ETL scripts
-
-├── eventbridge-rule/           # EventBridge rule definitions
-
-└── step-function/              # Step Functions workflow definition
+├── crawlers/                      # AWS Glue Crawler configurations
+├── data/                          # Sample data files
+│   ├── nyc_taxi/                  # NYC taxi trip data
+│   └── reference/                 # Reference data (taxi zones)
+├── ddl/                           # Table definitions
+├── etl-scripts/                   # AWS Glue ETL scripts
+├── eventbridge-rule/              # EventBridge rule definitions
+└── step-function/                 # Step Functions workflow definition
